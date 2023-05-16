@@ -18,7 +18,7 @@ class AudioConvertView(generics.RetrieveAPIView):
         wav_path = instance.wav_file.path
         mp3_path = os.path.splitext(wav_path)[0] + '.mp3'
         subprocess.call(['ffmpeg', '-i', wav_path, '-vn', '-ar', '44100', '-ac', '2', '-b:a', '192k', mp3_path])
-        instance.mp3_file = os.path.relpath(mp3_path,settings.MEDIA_ROOT)
+        instance.mp3_file = os.path.relpath(mp3_path, settings.MEDIA_ROOT)
         instance.save()
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
