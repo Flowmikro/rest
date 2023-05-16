@@ -1,0 +1,8 @@
+<form method="post" enctype="multipart/form-data" action="{% url 'audio_create' %}">
+    {% csrf_token %}
+    <label>Title:</label>
+    <input type="text" name="title"><br>
+    <label>File:</label>
+    <input type="file" name="wav_file"><br>
+    <button type="submit">Загрузить</button>
+</form>
